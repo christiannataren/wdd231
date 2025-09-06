@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | Christian Nataren Laguna</title>
+    <meta name="author" content="Christian Nataren Laguna">
+    <meta name="description" content="Assigment for WDD231 course presented by Christian Nataren Laguna">
+    <script src="scripts/getdates.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="images/logo.svg" alt="logo">
+        <span>Christian Nataren WDD231 Web Page</span>
+        <button id="burguer"> </button>
+    </header>
+    <nav class="hide">
+        <ul>
+            <li class="current"><a href="/">Home</a></li>
+            <li><a href="#">Chamber Project</a></li>
+            <li><a href="#">Final Project</a></li>
+        </ul>
+
+    </nav>
+    <main>
+        <h1>Home</h1>
+
+        <div id="section-container">
+            <section>
+                <div class="section-header">
+                    <h2>About me</h2>
+                </div>
+                <p>Hello, my name is <b>Christian Nataren</b>. At the moment, I'm pursuing a degree at BYU Pathway. The
+                    first
+                    certificate I'll be obtaining is in "Web & Computer Programming." I've completed the first five
+                    modules and am now working on the sixth. I'm eager to finally earn it. I've had a great time
+                    learning and have gained many useful skills, such as web development, Python, and object-oriented
+                    programming, to name a few.</p>
+            </section>
+            <section>
+                <div class="section-header">
+                    <h2>Student Photo</h2>
+                </div>
+                <img src="images/profile.jpg" alt="computer programmer, Christian Nataren">
+            </section>
+            <section>
+                <div class="section-header">
+                    <h2>Web Certificate Courses</h2>
+                </div>
+                <div id="buttons">
+                    <button id="all-courses">All</button>
+                    <button id="cse-courses">CSE</button>
+                    <button id="wdd-courses">WDD</button>
+                </div>
+                <ul id="courses-container"></ul>
+                <p>The total credits for courses listed above is <span id="credits"></span></p>
+            </section>
+        </div>
+
+    </main>
+    <footer>
+        <div id="social-media">
+            <a href="https://www.linkedin.com/in/christian-nataren/" target="_blank"><img src="images/linkedin.png"
+                    alt="linkegin logo"></a>
+            <a href="https://github.com/christiannataren/" target="_blank"><img src="images/github.png"
+                    alt="github logo"></a>
+            <a href="https://play.google.com/store/apps/developer?id=KILILIGames&hl=en" target="_blank"><img
+                    src="images/play.jpeg" alt="playstore logo"></a>
+        </div>
+        <p>
+            © <span id="currentyear"></span> | Christian Nataren Laguna | Chiapas, Mexico
+        </p>
+        <p id="lastmodified">
+
+        </p>
+    </footer>
+</body>
+
+</html>

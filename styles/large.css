@@ -1,0 +1,42 @@
+@media screen and (min-width:600px) {
+    #section-container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1em;
+    }
+    #burguer{
+        display: none;
+    }
+    .section-header{
+        height: 3em;
+    }
+
+    section:last-of-type{
+        grid-column: 1/3;
+    }
+
+    nav.hide{
+        display: block;
+        
+    }
+    nav{
+        margin-top: 1em;
+        padding: 0.5em;
+    }
+    nav ul{
+        flex-direction: row;
+        /* background-color: azure; */
+        gap: 1em;
+        align-items: center;
+    }
+    nav li, li.current{
+        background-color: transparent;
+    }
+    nav ul li{
+        padding: 0;
+        height: 2em;
+    }
+    nav li a{
+        color: white;
+    }
+}

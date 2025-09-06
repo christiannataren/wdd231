@@ -1,0 +1,226 @@
+:root {
+    --primary-color: #ffa600;
+}
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    /* background-color: transparent; */
+    box-sizing: border-box;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2 {
+    font-family: Roboto, Courier, monospace;
+}
+
+main {
+    padding: 1em;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    margin: 1em;
+    gap: 1em;
+}
+
+
+section {
+    display: grid;
+    background-color: antiquewhite;
+    margin-bottom: 1em;
+    justify-items: center;
+
+}
+
+section p {
+    padding: 0.7em;
+}
+
+section img {
+    max-width: 70%;
+}
+
+nav {
+    background-color: rgb(126, 83, 2);
+    /* padding: 1em; */
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+nav li {
+    list-style: none;
+    padding-left: 0.5em;
+    padding-bottom: 0.6em;
+    background-color: var(--primary-color);
+    height: 3em;
+    display: flex;
+    align-items: center;
+
+}
+
+nav li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav li a:hover {
+    font-size: larger;
+}
+
+nav li:nth-child(even) {
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
+}
+
+section h2 {
+    padding: 0.3em;
+}
+
+.section-header {
+    background-color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+}
+
+#logo {
+    max-width: 100%;
+}
+
+section img {
+    margin: 1em;
+    border-radius: 1em;
+}
+
+
+
+
+#burguer {
+    position: absolute;
+    right: 1em;
+    font-size: 2em;
+    background-color: transparent;
+    border: none;
+    top: 2.5em;
+
+}
+
+
+#social-media {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+
+}
+
+#social-media a {
+    /* max-height: 2em; */
+    max-width: 2em;
+    height: auto;
+}
+
+#buttons {
+    margin-top: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.2em;
+    padding: 0.4em;
+    width: 100%;
+}
+
+#courses-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.2em;
+
+
+}
+
+#courses-container li {
+    background-color: var(--primary-color);
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    padding: 0.2em;
+    border: solid 1px black;
+
+}
+
+section:last-of-type {
+    background-color: transparent;
+}
+
+button:hover {
+    border: solid 1px rgb(0, 0, 0, 0.1);
+}
+
+button:active {
+    opacity: 0.5;
+}
+
+#buttons button {
+    background-color: rgb(89, 191, 250);
+    padding: 0.5em;
+    font-weight: bold;
+
+}
+
+#burguer.open::before {
+    content: '❌';
+}
+
+#burguer::before {
+    content: "☰";
+}
+
+.hide {
+    display: none;
+}
+
+
+
+.completed::after {
+    content: " ✅";
+}
+
+footer {
+    text-align: center;
+}
+
+.current::after {
+    content: "📍";
+}
+
+.current {
+    background-color: #f8c15c;
+}
+
+#courses-container .progress {
+    background-color: gainsboro;
+}
+
+.progress::after {
+    content: "🔄";
+}
+
+footer{
+    padding-bottom: 1em;
+}
