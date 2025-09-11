@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    text-align: center;
+}
+
+
+h1,h2{
+    font-family: Tagesschrift, Arial, sans-serif;
+}
+
+main{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1em;
+    box-shadow: 0 0 40px -10px ;
+    margin-top: 1em;
+}
+
+#cards{
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
+}
+section h2{
+    margin-bottom: 0.5em;
+}
+
+section{
+    text-align: center;
+    background-color:#b9b9cc;
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+    border: 1px solid #6c6c8b;
+}
+.tag{
+    font-size: smaller;
+   
+}
+section img{
+    box-shadow: 0 0 5px 1px;
+    margin-top: 1em;
+}
