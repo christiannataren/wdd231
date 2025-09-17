@@ -6,12 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonala Chiapas, Chamber of Commerce</title>
     <meta name="description" content="Site of Tonala Chiapas, Chamber of Commerce">
+    <meta name="og:description" content="Site of Tonala Chiapas, Chamber of Commerce">
     <meta name="author" content="Christian Nataren Laguna">
     <link rel="icon" href="favicon.ico">
     <meta name="og:title" content="Tonala Chiapas, Chamber of Commerce">
+    <meta name="og:url" content="https://christiannataren.github.io/wdd231/chamber/">
+    <meta name="og:image" content="images/logo.png">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/getdates.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Ultra&display=swap"
+        rel="stylesheet">
+
+
 </head>
 
 <body>
+    <header>
+        <img id="logo" src="images/logo.jpg" alt="">
+        <span id="title">New York Chamber of Commerce</span>
+        <button aria-label="menu-opener" id="burguer"> </button>
+        <nav class="hide">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a class="current" href="directory.html">Directory</a>
+                </li>
+                <li>
+                    <a href="join.html">Join</a>
+                </li>
+                <li>
+                    <a href="discovery.html">Discovery</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>Directory Partners</h1>
+
+        <div class="button-container">
+            <button aria-label="grid-display" id="grid-button">
+                <img src="images/grid.png" alt="">
+
+            </button>
+            <button aria-label="list-display" id="list-button">
+                <img src="images/list.png" alt="">
+
+            </button>
+        </div>
+        <div id="members" class="grid-members">
+
+        </div>
+    </main>
+    <footer>
+        <div id="contact-info">
+        </div>
+        <div id="social-info">
+
+            <a href="#x"><img src="images/x.png" alt="x logo"></a>
+            <a href="#youtube"><img src="images/youtube.png" alt="youtube logo"></a>
+            <a href="#linkedin"><img src="images/linkedin.png" alt="youtube logo"></a>
+        </div>
+        <div id="developer-info">
+            <p>WDD231 Class Project</p>
+            <p>Christian Nataren Laguna</p>
+            <p>
+                © <span id="currentyear"></span> New York Chamber of Commerce
+            </p>
+            <p id="lastmodified">
+
+            </p>
+        </div>
+    </footer>
 
 </body>
 

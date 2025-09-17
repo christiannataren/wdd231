@@ -1,0 +1,84 @@
+{
+    "members": [
+        {
+            "name": "Beef Producer Associations",
+            "bussines_tag": "From Pasture to Plate, Together.",
+            "address": "102 Broadway, New York, NY 10003",
+            "email": "info@beefproducers.com",
+            "phone": "9828902387",
+            "url": "beefproducers.com",
+            "image": "images/beefproducer.jpg",
+            "membership-level": 3
+        },
+        {
+            "name": "Oakwood Steakhouse",
+            "bussines_tag": "Where Flavor Meets Tradition.",
+            "address": "450 Main St, New York, NY 10002",
+            "email": "info@oakwoodsteakhouse.com",
+            "phone": "7165558923",
+            "url": "oakwoodsteakhouse.com",
+            "image": "images/steakhouse.jpg",
+            "membership-level": 2
+        },
+        {
+            "name": "FuelStop Express",
+            "bussines_tag": "Powering Your Journey.",
+            "address": "789 Broadway, New York, NY 10003",
+            "email": "support@fuelstopexpress.com",
+            "phone": "3155557821",
+            "url": "fuelstopexpress.com",
+            "image": "images/fuelstop.jpg",
+            "membership-level": 1
+        },
+        {
+            "name": "QuickMart",
+            "bussines_tag": "Everything You Need, Anytime.",
+            "address": "32 5th Ave, New York, NY 10010",
+            "email": "hello@quickmart.com",
+            "phone": "2125554398",
+            "url": "quickmart.com",
+            "image": "images/quickmart.jpg",
+            "membership-level": 1
+        },
+        {
+            "name": "Urban Vogue",
+            "bussines_tag": "Style That Speaks.",
+            "address": "210 Canal St, New York, NY 10013",
+            "email": "contact@urbanvogue.com",
+            "phone": "6465552179",
+            "url": "urbanvogue.com",
+            "image": "images/urban.jpg",
+            "membership-level": 2
+        },
+        {
+            "name": "Golden Wok",
+            "bussines_tag": "Authentic Flavors, Every Bite.",
+            "address": "58 NW 5th St, New York, NY 10011",
+            "email": "info@goldenwok.com",
+            "phone": "7185553342",
+            "url": "goldenwok.com",
+            "image": "images/golden-wok.jpg",
+            "membership-level": 1
+        },
+        {
+            "name": "Grill & Bun",
+            "bussines_tag": "Burgers Crafted with Passion.",
+            "address": "1020 Summit Blvd, New York, NY 10012",
+            "email": "hello@grillandbun.com",
+            "phone": "5035557812",
+            "url": "grillandbun.com",
+            "image": "images/burguer.jpg",
+            "membership-level": 2
+        },
+        {
+            "name": "Summit Plaza",
+            "bussines_tag": "Shop, Dine, Enjoy.",
+            "address": "310 Madison Ave, New York, NY 10017",
+            "email": "info@summitplaza.com",
+            "phone": "4075556621",
+            "url": "summitplaza.com",
+            "image": "images/plaza.jpg",
+            "membership-level": 3
+        }
+    ]
+}
