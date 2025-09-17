@@ -49,6 +49,18 @@
     header{
         grid-template-columns: 1fr 2.5fr 3fr;
     }
+    footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 1em;
+        
+    }
+    footer div:last-of-type{
+        justify-self: end;
+    }
+    .card-header{
+        height: 67px;
+    }
 }
 @media screen and (min-width:1000px) {
     
