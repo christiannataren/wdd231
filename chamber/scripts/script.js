@@ -9,10 +9,14 @@ let contact_info = {
     state: "New York",
     zipcode: "NY 10001",
     email: "info@newyorkchamberofcommerce.org",
-    phone: "7165553321"
+    phone: "7165553321",
+    lat: "40.709130",
+    long: "-74.002138"
 
 };
-
+const base_url = "https://openweathermap.org"
+const api_url = "https://api.openweathermap.org/data/2.5"
+const api_key = "87c34ca3fc3f32fa4c4ea0cc7cf23556"
 
 function createCardGrid(member) {
     // console.log(member.name);
@@ -48,8 +52,32 @@ function createCardList(member) {
 
 }
 
+function loadMembersHome(members) {
+    let n_chosen = 3;
+    let chosen = [];
+    while (chosen.length < n_chosen) {
+        // console.log(chosen);
+        let el = Math.floor(Math.random() * members.length);
+        if (!chosen.includes(el)) {
+            chosen.push(el);
+        }
+    }
+
+    let membersDiv = document.querySelector("#home-members");
+    let selected = [];
+    chosen.forEach(n => {
+        selected.push(members[n]);
+    });
+    let cards = selected.map(member => createCardGrid(member));
+
+
+    // console.log(cards);
+    membersDiv.innerHTML = cards.join("");
+
+}
 function loadChamberMembers(members, grid = true) {
     let membersDiv = document.querySelector("#members");
+
     membersDiv.innerHTML = "";
     let cards = undefined;
     if (grid) {
@@ -73,13 +101,13 @@ function loadChamberMembers(members, grid = true) {
     membersDiv.innerHTML = cards.join("");
 }
 
-async function retrieveChamberMembers(grid = true) {
+async function retrieveChamberMembers(target, grid = true) {
     let data = await getHttpResponse("data/members.json");
     if (grid) {
-        loadChamberMembers(data.members);
+        target(data.members);
     } else {
 
-        loadChamberMembers(data.members, false);
+        target(data.members, false);
     }
 
 }
@@ -91,21 +119,142 @@ async function getHttpResponse(url) {
 
 // loadChamberMembers();
 
+
 function handleButtons() {
     document.querySelector("#grid-button").addEventListener("click", () => {
-        retrieveChamberMembers(true);
+        retrieveChamberMembers(loadChamberMembers, true);
 
     });
     document.querySelector("#list-button").addEventListener("click", () => {
-        retrieveChamberMembers(false);
+        retrieveChamberMembers(loadChamberMembers, false);
 
     });
 }
 
-if (window.location.href.includes("directory.html")) {
-    retrieveChamberMembers();
-    handleButtons();
+
+function getStringHour(date) {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+    });
+
+    return formatter.format(date).toLowerCase();
+
+
 }
+function getIconUrl(icon) {
+    return `${base_url}/img/wn/${icon}@2x.png`;
+}
+function setCurrentWeather(data) {
+    let section = document.querySelector("#w-values");
+    let img = document.querySelector("#w-image");
+    img.setAttribute("src", getIconUrl(data.weather[0].icon));
+    let spans = [];
+    spans.push(`<span class="bold">${Math.floor(data.main.temp)}°</span> C`);
+    spans.push(`${data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.substring(1)}`);
+    spans.push(`High: ${Math.floor(data.main.temp_min)}°`);
+    spans.push(`Low: ${Math.floor(data.main.temp_max)}°`);
+    spans.push(`Humidity: ${data.main.humidity}%`);
+    let sunriseDate = new Date(data.sys.sunrise * 1000);
+    let sunsetDate = new Date(data.sys.sunset * 1000);
+    spans.push(`Sunrise: ${getStringHour(sunriseDate)}`);
+    spans.push(`Sunset: ${getStringHour(sunsetDate)}`);
+    spans.forEach(line => {
+        let span = document.createElement("span");
+        span.innerHTML = line;
+        section.appendChild(span);
+    });
+
+
+}
+
+function populateCurrentWeather(data) {
+    setCurrentWeather(data)
+}
+
+function getDateDayName(date) {
+    return date.toLocaleDateString('en-US', { weekday: 'long' });
+}
+function populateForecast(data) {
+    let forecast = document.querySelector("#forecast");
+    let days = [];
+    days.push(data.list[0]);
+    let c_day = new Date(data.list[0].dt_txt).getDate();
+    for (let i = 1; i < data.list.length; i++) {
+        let current = new Date(data.list[i].dt_txt).getDate();
+        if (c_day != current) {
+            c_day = current;
+            days.push(data.list[i]);
+        }
+    }
+    let spans = [];
+    spans.push(`Today: <span class="bold">${Math.floor(days[0].main.temp)}°C</span>`);
+    spans.push(`${getDateDayName(new Date(days[1].dt_txt))}: <span class="bold">${Math.floor(days[1].main.temp)}°C</span>`);
+    spans.push(`${getDateDayName(new Date(days[2].dt_txt))}: <span class="bold">${Math.floor(days[2].main.temp)}°C</span>`);
+    spans.forEach(line => {
+        let span = document.createElement("span");
+        span.innerHTML = line;
+        forecast.appendChild(span);
+    });
+
+}
+
+async function getForeCast() {
+    let data = { "endpoint": "/forecast", "parameters": { "cnt": 16, "lat": contact_info.lat, "lon": contact_info.long } };
+    await getDataFromApi(data, populateForecast)
+}
+async function getWeather() {
+    await getDataFromApi({ "endpoint": "/weather", "parameters": { "lat": contact_info.lat, "lon": contact_info.long } }, populateCurrentWeather);
+
+
+}
+function requestError(error) {
+    console.log(error);
+}
+function defaultAPIValues() {
+    return `?units=metric&appid=${api_key}`;
+}
+function setUrlApi(endpoint, values) {
+    let url = `${api_url}${endpoint}${defaultAPIValues()}`;
+    Object.keys(values).forEach(key => {
+        url = `${url}&${key}=${values[key]}`
+    });
+    return url
+
+}
+async function getDataFromApi(data, callback) {
+    ////data is carrying the data for request data: enpoint and data: parameters
+    let compose = setUrlApi(data.endpoint, data.parameters);
+    try {
+        // let compose = {lat=${lat}&lon=${long}`;
+        let response = await fetch(compose);
+        if (response.ok) {
+            data = await response.json();
+            callback(data);
+        } else {
+            throw Error(await response.text());
+        }
+
+    } catch (error) {
+        requestError(error);
+    }
+}
+
+
+if (window.location.href.includes("directory.html")) {
+    retrieveChamberMembers(loadChamberMembers);
+    handleButtons();
+} else if (window.location.href.includes("index.html")) {
+    retrieveChamberMembers(loadMembersHome);
+    getWeather();
+    getForeCast();
+
+}
+
+
+
 
 
 function load_chamber_info() {

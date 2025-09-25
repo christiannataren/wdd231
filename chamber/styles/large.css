@@ -45,7 +45,18 @@
         padding: 0;
         
     }
-    
+    #home-members{
+        grid-column: 1/4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.3em;
+    }
+    #home-container{
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    #home-members section:last-of-type{
+        display: none;
+    }
     header{
         grid-template-columns: 1fr 2.5fr 3fr;
     }
@@ -70,4 +81,16 @@
     .grid-members{
         grid-template-columns: 1fr 1fr 1fr;
     }
+    #home-members{
+     grid-template-columns: 1fr 1fr 1fr;
+    }
+      #home-members section:last-of-type{
+        display: grid;
+    }
+}
+@media screen and (min-width:1200px) {
+    
+   body{
+    margin: 0 auto;
+   }
 }

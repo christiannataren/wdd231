@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directory | New York Chamber of Commerce</title>
-    <meta name="description" content="Directory | New York Chamber of Commerce">
+    <title>New York Chamber of Commerce</title>
+    <meta name="description" content="Site of New York, Chamber of Commerce">
 
     <meta name="author" content="Christian Nataren Laguna">
     <link rel="icon" href="favicon.ico">
-    <meta property="og:description" content="Directory | Site of New York, Chamber of Commerce">
-    <meta property="og:title" content="Directory | New York Chamber of Commerce">
+    <meta property="og:description" content="Site of New York, Chamber of Commerce">
+    <meta property="og:title" content="New York, Chamber of Commerce">
     <meta property="og:url" content="https://christiannataren.github.io/wdd231/chamber/">
     <meta property="og:image" content="https://christiannataren.github.io/wdd231/chamber/images/logo.jpg">
     <link rel="stylesheet" href="styles/small.css">
@@ -33,10 +33,10 @@
         <nav class="hide">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a class="current" href="index.html">Home</a>
                 </li>
                 <li>
-                    <a class="current" href="directory.html">Directory</a>
+                    <a href="directory.html">Directory</a>
                 </li>
                 <li>
                     <a href="join.html">Join</a>
@@ -47,25 +47,46 @@
             </ul>
 
         </nav>
+        <div id="hero">
+            <img src="images/hero.jpg" alt="new york landscape" />
+            <button id="keynotes">Keynote Tickets</button>
+
+        </div>
 
     </header>
 
     <main>
-        <h1>Directory Partners</h1>
+        <h1>Home</h1>
 
-        <div class="button-container">
-            <button aria-label="grid-display" id="grid-button">
-                <img src="images/grid.png" alt="grid button shower">
+        <div id="home-container">
+            <div class="section" id="events">
+                <div class="header-section">
+                    <h2>Events</h2>
+                </div>
 
-            </button>
-            <button aria-label="list-display" id="list-button">
-                <img src="images/list.png" alt="list button shower">
+            </div>
+            <div class="section" id="weather">
+                <div class="header-section">
+                    <h2>Current Weather</h2>
+                </div>
+                <div id="values-container">
+                    <img src="images/placeholder.png" alt="" id="w-image">
+                    <div id="w-values">
 
-            </button>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="header-section">
+                    <h2>Weather Forecast</h2>
+                </div>
+                <div id="forecast"></div>
+            </div>
+            <div id="home-members">
+
+            </div>
         </div>
-        <div id="members" class="grid-members">
 
-        </div>
     </main>
     <footer>
         <div id="contact-info">
