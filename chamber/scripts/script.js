@@ -18,20 +18,27 @@ const base_url = "https://openweathermap.org"
 const api_url = "https://api.openweathermap.org/data/2.5"
 const api_key = "87c34ca3fc3f32fa4c4ea0cc7cf23556"
 
-function createCardGrid(member) {
+function createCardGrid(member,isHome = false) {
     // console.log(member.name);
     let card = `<section class="grid">
      <div class="card-header"> <h2>${member.name} </h2>
      <p>${member.bussines_tag}</p>
      </div>
      <div class="image-container"><img src="${member.image}" alt="logo of ${member.name}" loading="lazy"></div>
-     <div class="member-info"><div class="values"><span class="tag-name">EMAIL:</span>
-     <span class="tag-value">${member.email}</span></div>
-     <div class="values"><span class="tag-name">PHONE:</span>
-     <span class="tag-value">${member.phone}</span></div>
-     <div class="values"><span class="tag-name">URL:</span>
-     <span class="tag-value">${member.url}</span></div></div>
-     </section>`;
+     <div class="member-info">`;
+     
+    if (!isHome) {
+        card += `<div class="values"><span class="tag-name">EMAIL:</span><span class="tag-value">${member.email}</span></div>`;
+    } else {
+        card += `<div class="values"><span class="tag-name">Address:</span><span class="tag-value">${member.address}</span></div>`;
+     }
+     card += `<div class="values"><span class="tag-name">PHONE:</span><span class="tag-value">${member.phone}</span></div>
+     <div class="values"><span class="tag-name">URL:</span><span class="tag-value">${member.url}</span></div>`
+     
+    if (isHome) {
+        card += `<div class="values"><span class="tag-name">Membership Level:</span><span class="tag-value">${member.level}</span></div>`;
+    }
+     card += `</div></section>`;
     return card;
 
 }
@@ -55,6 +62,7 @@ function createCardList(member) {
 function loadMembersHome(members) {
     let n_chosen = 3;
     let chosen = [];
+    members = members.filter(member => member.level > 1);
     while (chosen.length < n_chosen) {
         // console.log(chosen);
         let el = Math.floor(Math.random() * members.length);
@@ -68,7 +76,7 @@ function loadMembersHome(members) {
     chosen.forEach(n => {
         selected.push(members[n]);
     });
-    let cards = selected.map(member => createCardGrid(member));
+    let cards = selected.map(member => createCardGrid(member,true));
 
 
     // console.log(cards);

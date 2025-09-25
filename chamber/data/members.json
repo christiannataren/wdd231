@@ -8,7 +8,7 @@
             "phone": "9828902387",
             "url": "beefproducers.com",
             "image": "images/beefproducer.jpg",
-            "membership-level": 3
+            "level": 3
         },
         {
             "name": "Oakwood Steakhouse",
@@ -18,7 +18,7 @@
             "phone": "7165558923",
             "url": "oakwoodsteakhouse.com",
             "image": "images/steakhouse.jpg",
-            "membership-level": 2
+            "level": 2
         },
         {
             "name": "FuelStop Express",
@@ -28,7 +28,7 @@
             "phone": "3155557821",
             "url": "fuelstopexpress.com",
             "image": "images/fuelstop.jpg",
-            "membership-level": 1
+            "level": 1
         },
         {
             "name": "QuickMart",
@@ -38,7 +38,7 @@
             "phone": "2125554398",
             "url": "quickmart.com",
             "image": "images/quickmart.jpg",
-            "membership-level": 1
+            "level": 1
         },
         {
             "name": "Urban Vogue",
@@ -48,7 +48,7 @@
             "phone": "6465552179",
             "url": "urbanvogue.com",
             "image": "images/urban.jpg",
-            "membership-level": 2
+            "level": 2
         },
         {
             "name": "Golden Wok",
@@ -58,7 +58,7 @@
             "phone": "7185553342",
             "url": "goldenwok.com",
             "image": "images/golden-wok.jpg",
-            "membership-level": 1
+            "level": 1
         },
         {
             "name": "Grill & Bun",
@@ -68,7 +68,7 @@
             "phone": "5035557812",
             "url": "grillandbun.com",
             "image": "images/burguer.jpg",
-            "membership-level": 2
+            "level": 2
         },
         {
             "name": "Summit Plaza",
@@ -78,7 +78,7 @@
             "phone": "4075556621",
             "url": "summitplaza.com",
             "image": "images/plaza.jpg",
-            "membership-level": 3
+            "level": 3
         }
     ]
 }
