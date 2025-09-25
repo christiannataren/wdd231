@@ -18,7 +18,7 @@ const base_url = "https://openweathermap.org"
 const api_url = "https://api.openweathermap.org/data/2.5"
 const api_key = "87c34ca3fc3f32fa4c4ea0cc7cf23556"
 
-function createCardGrid(member,isHome = false) {
+function createCardGrid(member, isHome = false) {
     // console.log(member.name);
     let card = `<section class="grid">
      <div class="card-header"> <h2>${member.name} </h2>
@@ -26,19 +26,19 @@ function createCardGrid(member,isHome = false) {
      </div>
      <div class="image-container"><img src="${member.image}" alt="logo of ${member.name}" loading="lazy"></div>
      <div class="member-info">`;
-     
+
     if (!isHome) {
         card += `<div class="values"><span class="tag-name">EMAIL:</span><span class="tag-value">${member.email}</span></div>`;
     } else {
         card += `<div class="values"><span class="tag-name">Address:</span><span class="tag-value">${member.address}</span></div>`;
-     }
-     card += `<div class="values"><span class="tag-name">PHONE:</span><span class="tag-value">${member.phone}</span></div>
+    }
+    card += `<div class="values"><span class="tag-name">PHONE:</span><span class="tag-value">${member.phone}</span></div>
      <div class="values"><span class="tag-name">URL:</span><span class="tag-value">${member.url}</span></div>`
-     
+
     if (isHome) {
         card += `<div class="values"><span class="tag-name">Membership Level:</span><span class="tag-value">${member.level}</span></div>`;
     }
-     card += `</div></section>`;
+    card += `</div></section>`;
     return card;
 
 }
@@ -76,7 +76,7 @@ function loadMembersHome(members) {
     chosen.forEach(n => {
         selected.push(members[n]);
     });
-    let cards = selected.map(member => createCardGrid(member,true));
+    let cards = selected.map(member => createCardGrid(member, true));
 
 
     // console.log(cards);
@@ -210,7 +210,7 @@ function populateForecast(data) {
 }
 
 async function getForeCast() {
-    let data = { "endpoint": "/forecast", "parameters": { "cnt": 16, "lat": contact_info.lat, "lon": contact_info.long } };
+    let data = { "endpoint": "/forecast", "parameters": { "cnt": 30, "lat": contact_info.lat, "lon": contact_info.long } };
     await getDataFromApi(data, populateForecast)
 }
 async function getWeather() {
