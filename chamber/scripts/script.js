@@ -198,7 +198,7 @@ function populateForecast(data) {
         }
     }
     let spans = [];
-    spans.push(`Today: <span class="bold">${Math.floor(days[0].main.temp)}°C</span>`);
+    spans.push(`${getDateDayName(new Date(days[0].dt_txt))}: <span class="bold">${Math.floor(days[0].main.temp)}°C</span>`);
     spans.push(`${getDateDayName(new Date(days[1].dt_txt))}: <span class="bold">${Math.floor(days[1].main.temp)}°C</span>`);
     spans.push(`${getDateDayName(new Date(days[2].dt_txt))}: <span class="bold">${Math.floor(days[2].main.temp)}°C</span>`);
     spans.forEach(line => {
@@ -250,11 +250,14 @@ async function getDataFromApi(data, callback) {
     }
 }
 
-
-if (window.location.href.includes("directory.html")) {
+function getPath() {
+    return window.location.href.split("/").pop();
+}
+console.log(getPath().length);
+if (getPath().includes("directory.html")) {
     retrieveChamberMembers(loadChamberMembers);
     handleButtons();
-} else if (window.location.href.includes("index.html")) {
+} else if (getPath().includes("index.html") || getPath().length == 0) {
     retrieveChamberMembers(loadMembersHome);
     getWeather();
     getForeCast();
