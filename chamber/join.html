@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join US | New York Chamber of Commerce</title>
+    <meta name="description" content="You can join to New York, Chamber of Commerce in this page.">
+
+    <meta name="author" content="Christian Nataren Laguna">
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:description" content="Join to New York, Chamber of Commerce">
+    <meta property="og:title" content="Join Us, New York, Chamber of Commerce">
+    <meta property="og:url" content="https://christiannataren.github.io/wdd231/chamber/">
+    <meta property="og:image" content="https://christiannataren.github.io/wdd231/chamber/images/logo.jpg">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/large.css">
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/getdates.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Ultra&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="images/logo.jpg" alt="chamber of commerce New York Logo">
+        <span id="title">New York Chamber of Commerce</span>
+        <button aria-label="menu-opener" id="burguer"> </button>
+        <nav class="hide">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="directory.html">Directory</a>
+                </li>
+                <li>
+                    <a class="current" href="join.html">Join</a>
+                </li>
+                <li>
+                    <a href="discovery.html">Discovery</a>
+                </li>
+            </ul>
+
+        </nav>
+
+
+    </header>
+
+    <main>
+        <h1>Join Us</h1>
+        <div id="join-container">
+            <div class="join-section">
+
+                <p>
+                    Are you prepared to grow your business and network? A world of opportunities is unlocked by joining
+                    the Chamber! We're committed to supporting your goals and fostering your success via deep
+                    connections, involvement, and development—<span class="golden">let's get started right away!</span>
+                </p>
+            </div>
+            
+            <div class="join-section">
+                <h2>Membership Application Form</h2>
+                <form id="form-join" action="thankyou.html" method="GET">
+                    <fieldset>
+                        <legend>Applicant Information</legend>
+                        <label>
+                            First Name
+                            <span class="required"> *</span>
+                            <input type="text" name="fname" id="fname" autocomplete="given-name" required>
+                        </label>
+                        <label>
+                            Last Name
+                            <span class="required"> *</span>
+                            <input type="text" name="lname" id="lname" autocomplete="family-name" required>
+                        </label>
+                        <label>
+                            Organization title
+                            <input type="text" name="otitle" id="otitle" autocomplete="organization-title">
+                        </label>
+                        <label>
+                            Email
+                            <span class="required"> *</span>
+                            <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                                autocomplete="email" required></label>
+                        <label>Phone Number <span class="required"> *</span> <input type="tel" name="phone" id="phone"
+                                autocomplete="mobile" required></label>
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>Bussiness/Organization Information</legend>
+                        
+
+                        <span class="block">Membership Level</span>
+
+                        <div class="option-member">
+                            <label><input type="radio" name="membership" value="np">NP Membership</label>
+                            <button type="button" data-action="np" class="question"></button>
+                        </div>
+                        <div class="option-member">
+                            <label><input type="radio" name="membership" value="bronze">Bronze Membership </label>
+                            <button type="button" data-action="bronze" class="question"></button>
+                        </div>
+                        <div class="option-member">
+                            <label><input type="radio" name="membership" value="silver">Silver Membership </label>
+                            <button type="button" data-action="silver" class="question"></button>
+                        </div>
+                        <div class="option-member">
+                            <label><input type="radio" name="membership" value="gold">Gold Membership </label>
+                            <button type="button" data-action="gold" class="question"></button>
+                        </div>
+                        <label>Description <textarea class="block" name="description"
+                                id="description"></textarea></label>
+                    </fieldset>
+                    <input type="hidden" id="timestamp" name="timestamp">
+
+                    <input type="submit" value="Send information">
+                </form>
+            </div>
+            <div class="join-section">
+                <h2>Membership levels</h2>
+                <div class="mlevel">
+                    <h3>Non Profit Membership Level</h3>
+                    <button data-action="np">Learn More</button>
+                </div>
+                <div class="mlevel">
+                    <h3>Bronze Membership Level</h3>
+                    <button data-action="bronze">Learn More</button>
+                </div>
+                <div class="mlevel">
+                    <h3>Silver Membership Level</h3>
+                    <button data-action="silver">Learn More</button>
+                </div>
+                <div class="mlevel">
+                    <h3>Gold Membership Level</h3>
+                    <button data-action="gold">Learn More</button>
+                </div>
+            </div>
+        </div>
+        <dialog id="dbenefits">
+            <div class="header">
+                <h3 id="mtitle"></h3>
+            </div>
+            <div class="paddingone" id="mdescription"></div>
+            <p class="bold centered">Benefits:</p>
+            <ul id="mbenefits" class="centered"></ul>
+
+            <button id="dclose"></button>
+        </dialog>
+    </main>
+    <footer>
+        <div id="contact-info">
+        </div>
+        <div id="social-info">
+
+            <a href="#x"><img src="images/x.png" alt="x social network logo"></a>
+            <a href="#youtube"><img src="images/youtube.png" alt="youtube logo"></a>
+            <a href="#linkedin"><img src="images/linkedin.png" alt="linkedin logo"></a>
+        </div>
+        <div id="developer-info">
+            <p>WDD231 Class Project</p>
+            <p>Christian Nataren Laguna</p>
+            <p>
+                © <span id="currentyear"></span> New York Chamber of Commerce
+            </p>
+            <p id="lastmodified">
+
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

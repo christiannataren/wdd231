@@ -14,6 +14,56 @@ let contact_info = {
     long: "-74.002138"
 
 };
+let memberships = {
+    "np": {
+        name: "Non Profit Membership ",
+        description: "Ideal for mission-driven organizations like charities, arts groups, and community foundations. This entry-level tier emphasizes collaborative advocacy and resource-sharing to amplify your social impact without straining budgets.",
+        benefits: [
+            "Complimentary listing in our annual Community Impact Directory",
+            "Access to 4 quarterly non-profit networking mixers (virtual or in-person)",
+            "Discounted booth space at our annual Charity Expo (50% off)",
+            "Free consultation on grant-writing best practices (1 session/year)",
+            "Voting rights on community-focused policy committees"
+        ]
+    },
+    "bronze": {
+        name: "Bronze Membership",
+        description: "Perfect for startups and small enterprises ready to dip their toes into local commerce. This foundational tier provides essential visibility and connections to help you establish roots in the community.",
+        benefits: [
+            "All NP benefits, plus:",
+            "Profile on our online Member Directory with basic SEO optimization",
+            "Invites to 6 general networking events per year",
+            "10% discount on Chamber-sponsored advertising in local newsletters",
+            "Access to our Starter Toolkit (templates for business plans and marketing)",
+            "One complimentary ribbon-cutting ceremony for your grand opening"
+        ]
+    },
+    "silver": {
+        name: "Silver Membership",
+        description: "Tailored for mid-sized businesses aiming to scale. This mid-tier unlocks advanced collaboration tools and promotional opportunities to fuel expansion and partnerships.",
+        benefits: [
+            "All NP, Bronze benefits, plus:",
+            "Enhanced directory profile with photo, video embed, and priority search ranking",
+            "Unlimited access to all networking events, including VIP luncheons",
+            "20% discount on expo booths and sponsorship packages",
+            "Dedicated business mentor matching (quarterly check-ins)",
+            "Co-branded social media shoutouts (4 per year) and email blast features"
+        ]
+    },
+    "gold": {
+        name: "Gold Membership",
+        description: "Reserved for established leaders and corporations seeking maximum influence. This premium tier positions you as a pillar of the local economy with exclusive access and bespoke support.",
+        benefits: [
+            "All NP, Bronze, Silver benefits, plus:",
+            "Top-tier directory spotlight with custom landing page and analytics dashboard.",
+            "Boardroom access to executive roundtables and policy roundups (monthly)",
+            "30% discount on all events, plus priority speaking slots at conferences",
+            "Personalized growth strategy session with our CEO (biannually)",
+            "Exclusive invitation to the annual Gold Gala (with table for 10) and legacy naming opportunities for initiatives"
+        ]
+    }
+
+};
 const base_url = "https://openweathermap.org"
 const api_url = "https://api.openweathermap.org/data/2.5"
 const api_key = "87c34ca3fc3f32fa4c4ea0cc7cf23556"
@@ -218,6 +268,12 @@ async function getWeather() {
 
 
 }
+function setTimeStamp() {
+    let timestamp = document.querySelector("#timestamp");
+    if (timestamp != undefined) {
+        timestamp.setAttribute("value", Date.now());
+    }
+}
 function requestError(error) {
     console.log(error);
 }
@@ -253,7 +309,6 @@ async function getDataFromApi(data, callback) {
 function getPath() {
     return window.location.href.split("/").pop();
 }
-console.log(getPath().length);
 if (getPath().includes("directory.html")) {
     retrieveChamberMembers(loadChamberMembers);
     handleButtons();
@@ -279,5 +334,48 @@ function load_chamber_info() {
     `;
     contact_div.innerHTML = info;
 }
+const dialog = document.querySelector("#dbenefits");
+function getMembershipData(id) {
+    return memberships[id];
+}
+function showDialogMember(data) {
+    dialog.showModal();
+    let membership = getMembershipData(data);
+    document.querySelector("#mtitle").textContent = membership.name;
+    document.querySelector("#mdescription").textContent = membership.description;
+    let mbenefits = document.querySelector("#mbenefits");
+    let lis = membership.benefits.map(benefit => `<li>${benefit}</li>`);
+    mbenefits.innerHTML = lis.join("");
+}
 
+
+
+
+
+function joinButtons() {
+
+    let join = document.querySelector("#join-container");
+
+    if (join == undefined) {
+        return;
+    }
+    let closedialog = document.querySelector("#dclose");
+    closedialog.addEventListener("click", function () {
+        dialog.close()
+    });
+    join.addEventListener("click", function (element) {
+
+        let elem = element.target;
+        if (elem.matches("button")) {
+            let data = elem.getAttribute("data-action");
+            if (data != undefined) {
+                showDialogMember(data);
+            }
+            
+
+        }
+    });
+}
+joinButtons();
 load_chamber_info();
+setTimeStamp();
