@@ -62,10 +62,10 @@
                     connections, involvement, and development—<span class="golden">let's get started right away!</span>
                 </p>
             </div>
-            
+
             <div class="join-section">
                 <h2>Membership Application Form</h2>
-                <form id="form-join" action="thankyou.html" method="GET">
+                <form id="form-join" onsubmit="return validateForm(event)" action="thankyou.html" method="GET">
                     <fieldset>
                         <legend>Applicant Information</legend>
                         <label>
@@ -78,8 +78,11 @@
                             <span class="required"> *</span>
                             <input type="text" name="lname" id="lname" autocomplete="family-name" required>
                         </label>
+
                         <label>
                             Organization title
+                            <span id="title-error" class="error ocultar">This field only accept alpha characters, hyphens, and spaces
+                                with a minimum of seven (7) characters</span>
                             <input type="text" name="otitle" id="otitle" autocomplete="organization-title">
                         </label>
                         <label>
@@ -93,7 +96,12 @@
                     </fieldset>
                     <fieldset>
                         <legend>Bussiness/Organization Information</legend>
-                        
+                        <label>
+                            Bussiness/Organization Name
+                            <span class="required"> *</span>
+                            <input type="text" name="oname" id="oname" autocomplete="organization" required>
+                        </label>
+
 
                         <span class="block">Membership Level</span>
 

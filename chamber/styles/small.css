@@ -383,6 +383,7 @@ form input[type="text"] {
     width: 95%;
     min-height: 40px;
     margin-top: 0.3em;
+    font-size: 1.2em;
 
 }
 
@@ -587,6 +588,20 @@ dialog ul li {
 
 .option-member button {
     justify-self: flex-start;
+}
+.error{
+    /* background-color: rgb(242, 138, 138); */
+    display: block;
+    width: 95%;
+    font-weight: 100;
+    color: red;
+    font-size: smaller;
+}
+.red-input{
+    background-color: rgba(250, 207, 207, 0.481);
+}
+.ocultar{
+    display: none;
 }
 
 @keyframes fadeIn {

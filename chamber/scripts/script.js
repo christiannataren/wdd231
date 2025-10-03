@@ -310,7 +310,7 @@ function getPath() {
     return window.location.href.split("/").pop();
 }
 function fillReceivedInformation() {
-    
+
     let params = new URLSearchParams(window.location.search);
     let info = "";
     params.forEach((value, key) => {
@@ -319,10 +319,36 @@ function fillReceivedInformation() {
     });
     document.querySelector("#received-info").innerHTML = info;
     // console.log(info);
-    
+
+}
+function validateOtitle() {
+    let myRe = /^[a-zA-Z\s-]{7,}$/;
+    let otitle = document.querySelector("#otitle");
+    let value = otitle.value;
+
+    if (!myRe.test(value)) {
+        document.querySelector("#title-error").classList.remove("ocultar");
+        otitle.classList.add("red-input");
+        otitle.focus();
+        return false;
+
+    } else {
+        document.querySelector("#title-error").classList.add("ocultar");
+        otitle.classList.remove("red-input");
+        return true;
+    }
+}
+function validateForm(event) {
+    return validateOtitle();
 }
 if (getPath().includes("thankyou.html")) {
     fillReceivedInformation();
+
+}
+if (getPath().includes("join.html")) {
+    document.querySelector("#otitle").addEventListener("input", function () {
+        validateOtitle();
+    });
 
 }
 if (getPath().includes("directory.html")) {
@@ -387,7 +413,7 @@ function joinButtons() {
             if (data != undefined) {
                 showDialogMember(data);
             }
-            
+
 
         }
     });
