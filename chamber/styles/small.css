@@ -552,6 +552,20 @@ dialog ul {
 dialog ul li {
     list-style: none;
 }
+#thankyou .values:nth-of-type(even){
+    background-color: var(--secondary-color);
+}
+
+#received-info{
+    margin-top: 1em;
+}
+#thankyou{
+    display: grid;
+    justify-content: center;
+    margin-top: 1em;
+    text-align: center;
+
+}
 
 .header {
     min-height: 3em;

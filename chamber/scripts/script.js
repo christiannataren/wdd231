@@ -309,6 +309,22 @@ async function getDataFromApi(data, callback) {
 function getPath() {
     return window.location.href.split("/").pop();
 }
+function fillReceivedInformation() {
+    
+    let params = new URLSearchParams(window.location.search);
+    let info = "";
+    params.forEach((value, key) => {
+        info += `  <div class="values"><span class="tag-name">${key}:</span>
+                    <span class="tag-value">${value}</span></div>`
+    });
+    document.querySelector("#received-info").innerHTML = info;
+    // console.log(info);
+    
+}
+if (getPath().includes("thankyou.html")) {
+    fillReceivedInformation();
+
+}
 if (getPath().includes("directory.html")) {
     retrieveChamberMembers(loadChamberMembers);
     handleButtons();
