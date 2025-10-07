@@ -1,0 +1,150 @@
+:root {
+    --primary-color: #69008f;
+    --secondary-color: #fbff00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Libertinus Serif Display", Georgia, serif;
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: "Poller One", Georgia, serif;
+    /* color: var(--secondary-color); */
+    margin: 0;
+    text-align: center;
+
+
+}
+
+section h2 {
+    background-color: var(--secondary-color);
+    min-width: 100%;
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    max-height: 2em;
+
+}
+
+html {
+    background-color: var(--primary-color);
+    /* color: var(--secondary-color); */
+    padding-bottom: 2em;
+
+}
+
+main {
+    display: grid;
+    gap: 1em;
+    margin-top: 2em;
+    justify-content: center;
+
+}
+
+
+section {
+    background-color: #ffffff;
+    display: grid;
+    max-width: 20em;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    box-shadow: 0 0.3em 0.5em black;
+    margin-bottom: 1em;
+
+
+
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 0 auto;
+    background-color: aliceblue;
+    align-items: center;
+}
+
+h1 {
+    /* justify-self: left; */
+    font-size: 1.5em;
+    align-self: center;
+
+}
+
+header img {
+    padding: 1em;
+    max-width: 80%;
+}
+
+section p {
+    padding: 1em;
+}
+
+section ul {
+    padding-left: 1em;
+    max-width: 85%;
+    justify-self: center;
+}
+
+.value-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 100%;
+    align-items: center;
+    /* border: 3px solid black; */
+}
+
+.value-container span {
+    margin-top: 0.3em;
+
+}
+
+section li {
+    list-style: none;
+    margin-top: 0.3em;
+}
+
+section li::before {
+    content: "⚠️ ";
+}
+
+.tag {
+    justify-self: right;
+    margin-right: 0.3em;
+    font-size: smaller;
+    color: purple;
+}
+
+section img {
+    width: 100%;
+}
+
+.figure-container {
+    /* background-color: rebeccapurple; */
+    text-align: center;
+    /* padding: 0; */
+    /* border: solid 2px red; */
+}
+
+
+section figure {
+    /* border: 1px solid rgb(0, 0, 0,0.2); */
+    width: 90%;
+    margin: 1em auto;
+    padding: 0;
+    /* box-shadow: 0 0px 5px rgb(0, 0, 1); */
+
+}
+
+section figure:nth-child(even) {
+    /* box-shadow: 0 0px 10px red; */
+    border-top: 3px solid var(--secondary-color);
+}
+
+section figcaption {
+    font-size: smaller;
+}
