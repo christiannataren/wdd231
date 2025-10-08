@@ -17,7 +17,7 @@ function lastVisit() {
     let par = document.createElement("span");
     console.log(day);
     if (isNaN(day) || day == 0) {
-        par.innerHTML = `You last visited  <span class="bold red">today</span> .`;
+        par.innerHTML = `You last visited  <span class="bold red">today</span>.`;
     } else {
         par.innerHTML = `You last visited <span class="bold red">${day}</span> days ago.`;
     }
