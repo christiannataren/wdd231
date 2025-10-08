@@ -38,6 +38,7 @@ function buildingSection(place) {
     section.appendChild(createElement("h2", place.title))
     section.appendChild(createElement("address", place.address));
     section.appendChild(createElement("p", place.description));
+    section.append(createElement("button", "Learn More"));
     return section;
 
 }

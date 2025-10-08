@@ -274,7 +274,7 @@ footer {
 }
 
 .red {
-    color: red;
+    color: rgb(162, 0, 0);
 }
 
 #w-values,
@@ -615,12 +615,6 @@ dialog ul li {
     display: none;
 }
 
-#discovery-container section:port {
-
-    background-color: rgb(21, 189, 145);
-
-}
-
 #discovery-container section {
     display: grid;
     grid-template-areas:
@@ -646,6 +640,14 @@ dialog ul li {
 
 }
 
+#discovery-container section button {
+    height: 2em;
+    align-self: center;
+    font-size: larger;
+    font-weight: bold;
+
+}
+
 #discovery-container section h2 {
     grid-area: title;
     /* justify-self: center; */
@@ -666,9 +668,7 @@ dialog ul li {
 }
 
 
-#discovery-container section img:hover {
-   box-shadow: 0 0 5px 3px rgb(255, 0, 0);
-}
+
 
 
 
@@ -701,6 +701,8 @@ dialog ul li {
 
     /* overflow: hidden; */
 }
+
+
 
 
 @media screen and (max-width: 450px) {

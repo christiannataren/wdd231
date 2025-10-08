@@ -118,14 +118,23 @@
     #discovery-container section{
         grid-template-columns: 1fr 2fr;
     grid-template-areas: 
-    "photo title"
+    "title title"
     "photo address"
     "photo description"
-    /* "photo description" */
-    ;
-    /* background-color: aqua; */
+    "button button"
 }
 
+#discovery-container section h2{
+    justify-self: center;
+}
+#discovery-container section button{
+    grid-area: button;
+}
+    
+
+#discovery-container section img:hover {
+    box-shadow: 0 0 5px 3px rgb(255, 0, 0);
+}
 
 }
 
@@ -160,6 +169,17 @@
         align-self: center;
         width: 8em;
     }
+    #discovery-container section{
+        grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "photo title"
+    "photo address"
+    "photo description"
+    "button description"
+}
+#discovery-container section h2{
+    justify-self: baseline;
+}
 }
 
 @media screen and (min-width:1200px) {
