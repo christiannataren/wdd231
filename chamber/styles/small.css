@@ -273,6 +273,10 @@ footer {
     font-weight: bold;
 }
 
+.red {
+    color: red;
+}
+
 #w-values,
 #forecast {
     display: flex;
@@ -427,10 +431,12 @@ form label:last-of-type {
         opacity: 0;
         background-color: rgb(183, 255, 0);
     }
-    30%{
+
+    30% {
         background-color: rgb(255, 149, 0);
     }
-    50%{
+
+    50% {
         background-color: rgb(202, 199, 12);
     }
 
@@ -443,7 +449,7 @@ form label:last-of-type {
 
 .mlevel {
     background-color: var(--secondary-color);
-    
+
     border: 1px solid black;
     padding: 1em;
     border-bottom-left-radius: 1em;
@@ -553,14 +559,16 @@ dialog ul {
 dialog ul li {
     list-style: none;
 }
-#thankyou .values:nth-of-type(even){
+
+#thankyou .values:nth-of-type(even) {
     background-color: var(--secondary-color);
 }
 
-#received-info{
+#received-info {
     margin-top: 1em;
 }
-#thankyou{
+
+#thankyou {
     display: grid;
     justify-content: center;
     margin-top: 1em;
@@ -589,7 +597,8 @@ dialog ul li {
 .option-member button {
     justify-self: flex-start;
 }
-.error{
+
+.error {
     /* background-color: rgb(242, 138, 138); */
     display: block;
     width: 95%;
@@ -597,12 +606,81 @@ dialog ul li {
     color: red;
     font-size: smaller;
 }
-.red-input{
+
+.red-input {
     background-color: rgba(250, 207, 207, 0.481);
 }
-.ocultar{
+
+.ocultar {
     display: none;
 }
+
+#discovery-container section:port {
+
+    background-color: rgb(21, 189, 145);
+
+}
+
+#discovery-container section {
+    display: grid;
+    grid-template-areas:
+        "title"
+        "photo"
+        "address"
+        "description"
+    ;
+    gap: 0.6em;
+    background-color: var(--secondary-color);
+    padding: 0.5em;
+    margin-bottom: 1em;
+    /* border-radius: 8px; */
+}
+
+#discovery-container section address {
+
+    grid-area: address;
+}
+
+#discovery-container section p {
+    grid-area: description;
+
+}
+
+#discovery-container section h2 {
+    grid-area: title;
+    /* justify-self: center; */
+}
+
+
+#discovery-container section img {
+    grid-area: photo;
+    justify-self: center;
+    align-self: center;
+}
+
+#last-visit button {
+    position: absolute;
+    right: 0.2em;
+    top: 0;
+
+}
+
+
+#discovery-container section img:hover {
+   box-shadow: 0 0 5px 3px rgb(255, 0, 0);
+}
+
+
+
+#last-visit {
+    position: relative;
+    border: 1px solid red;
+    min-height: 2em;
+    padding: 0.3em;
+    margin: 1em;
+}
+
+
 
 @keyframes fadeIn {
     from {
