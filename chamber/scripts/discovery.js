@@ -22,7 +22,7 @@ function lastVisit() {
     let button = document.createElement("button");
     button.textContent = "❌";
     document.querySelector("#last-visit").appendChild(button);
-    window.localStorage.setItem("last-visit", new Date("2025-10-05T10:30:00Z").getTime());
+    window.localStorage.setItem("last-visit", Date.now());
     button.addEventListener("click", function () {
         document.querySelector("#last-visit").classList.add("ocultar");
     })
