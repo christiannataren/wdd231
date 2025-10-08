@@ -16,7 +16,12 @@ function lastVisit() {
     console.log(difference);
     let day = Math.round(difference / 1000 / 60 / 60 / 24);
     let par = document.createElement("span");
-    par.innerHTML = `You last visited <span class="bold red">${day}</span> days ago.`;
+    if (day == NaN) {
+        par.innerHTML = `You last visited today.`;
+    } else {
+        par.innerHTML = `You last visited <span class="bold red">${day}</span> days ago.`;
+    }
+
     console.log(par.outerHTML);
     document.querySelector("#last-visit").appendChild(par);
     let button = document.createElement("button");
