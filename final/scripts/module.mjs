@@ -1,9 +1,10 @@
 import { sendRequest } from "./fetcher.mjs";
 
-
+let currentCats = {};
 
 function addCat(cat) {
-    console.table(cat["breeds"][0]["temperament"]);
+    // console.table(cat);
+    // console.table(cat["breeds"][0]["temperament"]);
     let breeds = cat["breeds"][0];
     let div = `
     <img src="${cat.url}" alt="photo of ${breeds.name}" loading="lazy" >
@@ -27,24 +28,48 @@ ${breeds.origin}
     <span class="cat-value">
 ${breeds.temperament}
     </span>
-    <button class="button primary-btn" data-id="">See more</button>
+    <button class="button primary-btn" data-id="${cat.id}">See more</button>
     </div>
-    
     `;
     return div;
+}
 
 
-    // let img = document.createElement('img');
-    // img.setAttribute("src", cat.url);
-    // img.setAttribute("loading", "lazy");
-    // let div = document.createElement("div");
-    // div.classList.add("kitty-container");
-    // div.appendChild(img);
-    // return div;
+function fillDialog(cat) {
+    console.log("filling dialog");
+    let dialog = document.querySelector("dialog");
+    dialog.innerHTML = "";
+    dialog.innerHTML = `<button id="close-dialog"></button>${addCat(cat)}`;
+    document.querySelector("#close-dialog").addEventListener("click", function () {
+       document.querySelector("dialog").close();
+    });
+    dialog.showModal();
+
+}
+
+function clickButtonMore(event) {
+    let id = event.target.getAttribute("data-id");
+    fillDialog(currentCats[id]);
+
+}
+function setMoreButtons() {
+    let container = document.querySelector("#cat-container");
+    container.querySelectorAll("button").forEach((button) => {
+        // console.log(button);
+        button.addEventListener("click", clickButtonMore)
+    });
+}
+function saveCurrentCats(data) {
+    // console.table(data[0]);
+    data.map(gato => currentCats[gato.id] = gato);
+    // console.table(currentCats);
+
 }
 
 function loadHomeCats(data) {
     // console.table(data[0]["breeds"][0]);
+    saveCurrentCats(data);
+
     let container = document.querySelector("#cat-container");
     container.innerHTML = "";
     let h2 = document.createElement("h2");
@@ -57,11 +82,20 @@ function loadHomeCats(data) {
         container.appendChild(div);
 
     });
+    setMoreButtons();
+}
+
+function getBreeds(data) {
+    data.forEach(breed => {
+        console.table(`${breed.name} - ${breed.id}`);
+    })
+    
 }
 
 function loadinCats() {
     fillingLoading();
-    getData("/images/search", { limit: 20, has_breeds: true }, loadHomeCats);
+    // getData("/images/search", { limit: 20, has_breeds: true,breed_ids:"ocic" }, loadHomeCats);
+    getData("/images/search", { limit: 20, has_breeds: true}, loadHomeCats);
 }
 
 async function getData(endpoint, parameters, callback) {
@@ -95,6 +129,8 @@ function prepareButtons() {
 }
 
 // fillingLoading();
+
+getData("/breeds", { limit: 100}, getBreeds);
 prepareButtons();
 loadinCats();
 
