@@ -4,8 +4,6 @@ import * as Util from "./util.mjs";
 let currentCats = {};
 let limit = 21;
 function addCat(cat) {
-    // console.table(cat);
-    // console.table(cat["breeds"][0]["temperament"]);
     let breeds = cat["breeds"][0];
     let fav_btn = "";
     let fav_cat = window.localStorage.getItem('favorite');
@@ -57,8 +55,6 @@ ${breeds.temperament}
 function resetFavorite() {
     let favs = document.querySelectorAll(".favorite");
     favs.forEach(fav => {
-        // console.log()
-        // console.log(fav);
         if (window.localStorage.getItem("favorite") == fav.getAttribute("data-id")) {
             fav.classList.add("liked")
         } else {
@@ -100,21 +96,17 @@ function clickButton(event) {
 function setButtons() {
     let container = document.querySelector("#cat-container");
     container.querySelectorAll("button").forEach((button) => {
-        // console.log(button);
         button.addEventListener("click", clickButton)
     });
 }
 function saveCurrentCats(data) {
-    // console.table(data[0]);
     data.map(gato => currentCats[gato.id] = gato);
-    // console.table(currentCats);
 
 }
 
 function loadHomeCats(data) {
-    // console.table(data[0]["breeds"][0]);
     saveCurrentCats(data);
-
+    console.table(data);
     let container = document.querySelector("#cat-container");
     container.innerHTML = "";
     let h2 = document.createElement("h2");

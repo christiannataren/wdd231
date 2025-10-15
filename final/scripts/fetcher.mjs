@@ -15,7 +15,6 @@ function setUrlApi(endpoint, values) {
 }
 export async function sendRequest(endpoint, data, callback) {
     let url = setUrlApi(endpoint, data);
-    console.log(url);
     try {
         let response = await fetch(url);
         let data = await response.json();

@@ -210,7 +210,6 @@ a {
     font-family: "Poller One", Georgia, serif;
     display: block;
     border: none;
-
     text-align: center;
     border-top: 3px solid rgba(0, 0, 0, 0.586);
     border-right: 3px solid black;
@@ -563,6 +562,11 @@ footer {
 
 }
 
+.video {
+    color: red;
+    margin-bottom: 0.3em;
+    display: block;
+}
 
 
 
