@@ -27,11 +27,19 @@ document.querySelector("nav").addEventListener("click", function (event) {
 
 function fillThankYou() {
     if (Util.getLocation() == "receiving.html") {
-        let data = new URLSearchParams(window.location.href);
+        let data = new URLSearchParams(window.location.search);
+        
+        let spans = "<h3>Received data:</h3>";
         data.forEach((value, key) => {
-            console.log(value);
-            console.log(key);
+            spans += `<span class="cat-field">
+    ${key}: 
+    </span>
+    <span class="cat-value">
+${value}
+    </span>`;
         });
+        document.querySelector("#show-data").innerHTML = spans;
+
     }
 }
 
