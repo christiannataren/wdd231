@@ -201,9 +201,6 @@ button:active {
     content: " ✅";
 }
 
-footer {
-    text-align: center;
-}
 
 .current::after {
     content: "📍";
@@ -221,6 +218,10 @@ footer {
     content: "🔄";
 }
 
-footer{
+footer {
     padding-bottom: 1em;
+}
+
+footer {
+    text-align: center;
 }

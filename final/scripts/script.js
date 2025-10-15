@@ -7,7 +7,6 @@ burguer.addEventListener("click", function () {
     burguer.classList.toggle("open");
 });
 
-console.log(document.querySelector("nav"));
 document.querySelector("nav").addEventListener("click", function (event) {
     if (event.target.tagName == "LI") {
         let a = event.target.querySelector("a");

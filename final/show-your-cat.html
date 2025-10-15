@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Kitties</title>
+    <title>Show Your Cat | Cute Kitties</title>
 
-    <meta name="description" content="Cute kitties a web site for cat lovers">
+    <meta name="description" content="Show Your Cat, cute kitties a web site for cat lovers">
     <meta name="author" content="Christian Nataren Laguna">
     <link rel="icon" href="favicon.ico">
-    <meta property="og:description" content="Cute kitties a web site for cat lovers">
-    <meta property="og:title" content="Cute Kitties">
+    <meta property="og:description" content="Show Your Cat, cute kitties a web site for cat lovers">
+    <meta property="og:title" content="Show Your Cat | Cute Kitties">
     <meta property="og:url" content="https://christiannataren.github.io/wdd231/final/">
     <meta property="og:image" content="https://christiannataren.github.io/wdd231/final/images/logo.jpg">
 
@@ -45,13 +45,13 @@
 
         <ul>
             <li>
-                <a class="current" href="index.html">Home</a>
+                <a href="index.html">Home</a>
             </li>
             <li>
                 <a href="my-favorite.html">My Favorite Breed</a>
             </li>
             <li>
-                <a href="show-your-cat.html">Show Your Cat</a>
+                <a class="current" href="show-your-cat.html">Show Your Cat</a>
             </li>
         </ul>
 
@@ -59,10 +59,32 @@
 
 
     <main>
-        <div id="cat-container">
+        <div id="form-container">
+            <h2>Show your cat to the world</h2>
+
+            <form action="receiving.html" method="GET">
+                <fieldset>
+                    <legend>Cat information</legend>
+                    <label>Name<span class="required"></span> <input required type="text" name="cat-name" id="cat-name"></label>
+                    <label>Age <input type="number" name="age" id="age"></label>
+                    <label>Breed<span class="required"></span>  <input type="text" required name="breed" id="breed"></label>
+                    <label>Temperament: <input type="text" name="temperament" id="temperament"></label>
+                    <label>Photo<span class="required"></span>  <input type="file" required name="photo" id="photo"></label>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Owner information</legend>
+                    <label>Full Name<span class="required"></span><input type="text" required name="fullname" id="fullname"></label>
+                    <label>Country <input type="text" name="country" id="country"></label>
+                    <label>Email<span class="required"></span> <input required type="email" name="email" id="email"></label>
+                </fieldset>
+                <button class="primary-btn button main">Send My Cat</button>
+
+
+            </form>
         </div>
-        <button class="button secondary-btn main" id="show">Show More Cats</button>
-        <button class="button secondary-btn main"><a href="my-favorite.html">My Favorite Breed</a></button>
+
         <dialog class="kitty-container">
 
 

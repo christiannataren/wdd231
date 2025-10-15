@@ -1,14 +1,34 @@
 import { sendRequest } from "./fetcher.mjs";
 
 let currentCats = {};
+let limit = 21;
 
 function addCat(cat) {
     // console.table(cat);
     // console.table(cat["breeds"][0]["temperament"]);
     let breeds = cat["breeds"][0];
+    let fav_btn = "";
+    let fav_cat = window.localStorage.getItem('favorite');
+    if (fav_cat == null) {
+        fav_btn = `<button aria-label="FavoriteButton" data-id="${breeds.id}" data-name="${breeds.name}" class="favorite"></button>
+        `;
+    } else {
+        if (fav_cat == breeds.id) {
+            fav_btn = `<button aria-label="FavoriteButton" data-id="${breeds.id}" data-name="${breeds.name}" class="favorite liked"></button>
+        `;
+        } else {
+            fav_btn = `<button  aria-label="FavoriteButton" data-id="${breeds.id}" data-name="${breeds.name}"class="favorite"></button>
+        `;
+        }
+
+    }
+
+    fav_btn = fav_btn + `<p class="fav-message ocultar">${breeds.name} cat has become your favorite breed.</p>`;
     let div = `
-    <img src="${cat.url}" alt="photo of ${breeds.name}" loading="lazy" >
+    
+    <div class="img-container"><img src="${cat.url}" alt="photo of ${breeds.name}" loading="lazy" ></div>
     <div class="cat-data">
+    ${fav_btn}
     <span class="cat-field">
     Breed: 
     </span>
@@ -41,22 +61,60 @@ function fillDialog(cat) {
     dialog.innerHTML = "";
     dialog.innerHTML = `<button id="close-dialog"></button>${addCat(cat)}`;
     document.querySelector("#close-dialog").addEventListener("click", function () {
-       document.querySelector("dialog").close();
+        document.querySelector("dialog").close();
     });
     dialog.showModal();
 
 }
 
-function clickButtonMore(event) {
+function resetFavorite() {
+    let favs = document.querySelectorAll(".favorite");
+    favs.forEach(fav => {
+        // console.log()
+        // console.log(fav);
+        if (window.localStorage.getItem("favorite") == fav.getAttribute("data-id")) {
+            fav.classList.add("liked")
+        } else {
+            fav.classList.remove("liked");
+        }
+    });
+
+}
+
+function clickFavoriteButton(button) {
+
+    if (button.classList.contains("liked")) {
+        return;
+    }
+    button.parentElement.parentElement.classList.add("coloring-red");
+    // button.parentElement.parentElement.querySelector(".fav-message").classList.add("show-second");
+    button.parentElement.parentElement.querySelector(".fav-message").classList.remove("ocultar");
+
+    // button.classList.add("liked");
+    window.localStorage.setItem("favorite", button.getAttribute("data-id"));
+    window.localStorage.setItem("favorite-name", button.getAttribute("data-name"));
+    resetFavorite();
+    setTimeout(function () {
+        button.parentElement.parentElement.querySelector(".fav-message").classList.add("ocultar");
+        button.parentElement.parentElement.classList.remove("coloring-red");
+        console.log("Erasing p");
+
+    }, 3000);
+}
+function clickButton(event) {
+    if (event.target.classList.contains("favorite")) {
+        clickFavoriteButton(event.target);
+        return;
+    }
     let id = event.target.getAttribute("data-id");
     fillDialog(currentCats[id]);
 
 }
-function setMoreButtons() {
+function setButtons() {
     let container = document.querySelector("#cat-container");
     container.querySelectorAll("button").forEach((button) => {
         // console.log(button);
-        button.addEventListener("click", clickButtonMore)
+        button.addEventListener("click", clickButton)
     });
 }
 function saveCurrentCats(data) {
@@ -73,7 +131,24 @@ function loadHomeCats(data) {
     let container = document.querySelector("#cat-container");
     container.innerHTML = "";
     let h2 = document.createElement("h2");
-    h2.innerHTML = "Ramdom Cats";
+    switch (getLocation()) {
+        case "":
+        case "index.html":
+            h2.textContent = "Random Cats";
+
+
+            break;
+        case "my-favorite.html":
+            if (getFavoriteBreed() == null) {
+                h2.textContent = "You have not selected a favorite breed, showing Random cats";
+            } else {
+                h2.innerHTML = `Showing only <span class="bold">${window.localStorage.getItem("favorite-name")}</span> cats.`;
+            }
+
+
+            break;
+    }
+
     container.appendChild(h2);
     let cats = data.map((cat) => {
         let div = document.createElement("div");
@@ -82,20 +157,46 @@ function loadHomeCats(data) {
         container.appendChild(div);
 
     });
-    setMoreButtons();
+    setButtons();
 }
 
 function getBreeds(data) {
     data.forEach(breed => {
         console.table(`${breed.name} - ${breed.id}`);
     })
-    
+
 }
 
+function getLocation() {
+    return window.location.href.split("?")[0].split("/")[window.location.href.split("?")[0].split("/").length - 1];
+
+}
+function getFavoriteBreed() {
+    return window.localStorage.getItem("favorite");
+}
 function loadinCats() {
-    fillingLoading();
-    // getData("/images/search", { limit: 20, has_breeds: true,breed_ids:"ocic" }, loadHomeCats);
-    getData("/images/search", { limit: 20, has_breeds: true}, loadHomeCats);
+
+    let url = getLocation();
+    console.log(url);
+
+    switch (url) {
+        case "":
+        case "index.html":
+            fillingLoading();
+            getData("/images/search", { limit: limit, has_breeds: true }, loadHomeCats);
+            break;
+        case "my-favorite.html":
+            fillingLoading();
+            if (getFavoriteBreed() != null) {
+                getData("/images/search", { limit: limit, has_breeds: true, breed_ids: getFavoriteBreed() }, loadHomeCats);
+            } else {
+                getData("/images/search", { limit: limit, has_breeds: true }, loadHomeCats);
+            }
+            // 
+
+            break;
+    }
+
 }
 
 async function getData(endpoint, parameters, callback) {
@@ -130,7 +231,7 @@ function prepareButtons() {
 
 // fillingLoading();
 
-getData("/breeds", { limit: 100}, getBreeds);
+// getData("/breeds", { limit: 100 }, getBreeds);
 prepareButtons();
 loadinCats();
 

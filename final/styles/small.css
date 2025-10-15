@@ -109,12 +109,16 @@ nav li {
     border: 1px solid black;
     min-height: 40px;
 }
-nav li:hover{
+
+nav li:hover {
     font-size: 1.3em;
     /* opacity: 0.8; */
-    border-top: 3px solid red;
-    border-bottom: 3px solid red;
+    /* border-top: 3px solid red;
+    border-bottom: 3px solid red; */
     /* background-color: #c3c600; */
+}
+ nav ul:hover  li:not(:hover){
+    opacity: 0.5;
 }
 
 a {
@@ -153,6 +157,8 @@ a {
     border-radius: 7px;
 
 }
+
+
 
 
 
@@ -197,6 +203,16 @@ a {
     align-self: center;
 }
 
+.primary-btn a {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+}
+
+.secondary-btn a {
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
 .button {
     font-size: 1.2em;
     font-weight: bold;
@@ -215,7 +231,7 @@ a {
 }
 
 
-#show {
+.main {
     /* margin: auto 0; */
     margin-top: 1em;
 
@@ -261,6 +277,7 @@ a {
 }
 
 .cat-data {
+    position: relative;
     margin-top: 1em;
     background-color: #fbff00c7;
     padding: 1em;
@@ -275,6 +292,10 @@ dialog::backdrop {
 }
 
 dialog:not([open]) {
+    display: none;
+}
+
+dialog:open .favorite {
     display: none;
 }
 
@@ -329,6 +350,7 @@ dialog .img-container {
     justify-content: center;
 
 }
+
 #close-dialog {
     font-size: 2em;
     background-color: transparent;
@@ -336,12 +358,178 @@ dialog .img-container {
     position: absolute;
     top: 0.5em;
     right: 0.5em;
+    z-index: 1;
 
 }
 
 #close-dialog::before {
     content: "❌";
 }
+
+.favorite {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: -0.6rem;
+    left: -1rem;
+    font-size: 2em;
+}
+
+
+
+.favorite:hover::before {
+    font-size: 1.3em;
+    content: "💖";
+}
+
+.favorite::before {
+    content: "💟";
+}
+
+.liked::before {
+    content: "💖";
+}
+
+.img-container {
+    align-self: center;
+    justify-self: center;
+    position: relative;
+}
+
+.coloring-red {
+    animation-name: coloring-red;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    /* animation-iteration-count: 10; */
+}
+
+.ocultar {
+    display: none;
+}
+
+.fav-message:not(.ocultar) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fav-message {
+    position: absolute;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 1.1em;
+    font-weight: bold;
+    left: 0;
+    top: -5em;
+    width: 100%;
+    /* margin: 0 auto; */
+    text-align: center;
+    padding: 0;
+    border-radius: 4px;
+    height: 3em;
+    border: 4px solid red;
+
+
+}
+
+.show-second {
+    animation-name: show;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+.bold {
+    font-weight: bold;
+    color: rgb(122, 179, 248);
+}
+
+.current {
+    border-bottom: 4px solid var(--primary-color);
+    padding: 0.1em;
+}
+
+footer {
+    margin-top: 2em;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+#social-media {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+
+}
+
+#social-media a {
+    /* max-height: 2em; */
+    max-width: 2em;
+    height: auto;
+}
+
+
+#form-container{
+    margin-top: 1em;
+    padding: 1em;
+}
+#form-container h2{
+    margin-bottom: 1em;
+}
+
+#form-container form input[type=text],
+#form-container form input[type=number],
+#form-container form input[type=email] ,
+#form-container form input[type=file] {
+    min-height: 44px;
+    margin-top: 0.2em;
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 0.7em;
+    width: 100%;
+}
+
+.required::after{
+    content: "*";
+    color: red;
+}
+
+#form-container form fieldset{
+    padding: 0.6em;
+}
+#form-container form fieldset:not(:first-of-type){
+margin-top: 1em;
+/* background-color: aqua; */
+
+}
+#form-container form legend {
+    margin: 0 0.4em 0 0.4em;
+    padding: 0.5em;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+#form-container form label {
+    /* display: block; */
+    margin-top: 0.7em;
+    /* display: grid; */
+    font-weight: bold;
+    /* margin-bottom: 1em; */
+
+
+
+}
+
+#form-container form {
+    margin: 0 auto;
+    background-color: #fbff00;
+    font-size: 1.3em;
+    padding: 0.5em;
+    max-width: 20em;
+    /* margin: 1em; */
+}
+
+
 
 
 
@@ -379,18 +567,23 @@ dialog .img-container {
     .cat-data button {
         display: block;
     }
+
     nav li {
         width: 100%;
         align-self: center;
         text-align: center;
         margin: 0;
         border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
     }
 
     nav li:first-of-type {
         border-left: 2px solid var(--primary-color);
     }
+
     nav li:not(:first-of-type) {
         border-left: 2px solid var(--primary-color);
     }
@@ -411,12 +604,28 @@ dialog .img-container {
 }
 
 
+@keyframes show {
+    0% {
+        display: none;
+        /* background-color: aqua; */
+    }
+
+    90% {
+        display: block;
+    }
+
+    100% {
+        display: none;
+    }
+}
+
 @keyframes m-border {
     0% {
         opacity: .8;
     }
-    100%{
-       opacity: 1;
+
+    100% {
+        opacity: 1;
     }
 }
 
@@ -428,5 +637,38 @@ dialog .img-container {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes coloring-red {
+    0% {
+        background-color: var(--secondary-color);
+        transform: rotate(0);
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20% {
+        transform: rotate(-2deg);
+    }
+
+    30% {
+        transform: rotate(2deg);
+    }
+
+    40% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(0);
+        background-color: red;
+    }
+
+    100% {
+        background-color: var(--secondary-color);
+
     }
 }
