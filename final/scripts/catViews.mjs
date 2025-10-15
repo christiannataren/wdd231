@@ -106,7 +106,6 @@ function saveCurrentCats(data) {
 
 function loadHomeCats(data) {
     saveCurrentCats(data);
-    console.table(data);
     let container = document.querySelector("#cat-container");
     container.innerHTML = "";
     let h2 = document.createElement("h2");
