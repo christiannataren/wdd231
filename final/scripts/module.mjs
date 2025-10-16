@@ -3,11 +3,6 @@ import * as Util from "./util.mjs";
 
 Views.prepareButtons();
 Views.loadinCats();
-
-
-
-
-
 const burguer = document.querySelector("#burguer");
 
 burguer.addEventListener("click", function () {

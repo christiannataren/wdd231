@@ -70,10 +70,7 @@ function clickFavoriteButton(button) {
         return;
     }
     button.parentElement.parentElement.classList.add("coloring-red");
-    // button.parentElement.parentElement.querySelector(".fav-message").classList.add("show-second");
     button.parentElement.parentElement.querySelector(".fav-message").classList.remove("ocultar");
-
-    // button.classList.add("liked");
     window.localStorage.setItem("favorite", button.getAttribute("data-id"));
     window.localStorage.setItem("favorite-name", button.getAttribute("data-name"));
     resetFavorite();
@@ -164,7 +161,6 @@ export function loadinCats() {
             } else {
                 getData("/images/search", { limit: limit, has_breeds: true }, loadHomeCats);
             }
-            // 
 
             break;
     }

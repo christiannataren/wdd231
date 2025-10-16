@@ -1,7 +1,5 @@
 const api_url = "https://api.thecatapi.com/v1";
 const api_key = "live_ddhEL32ozSG4mKF2qv7GiURNcKWMEb6KAuwJT80whiNIZChhi7fyrV090y8zxAsX";
-
-
 function defaultAPIValues() {
     return `?api_key=${api_key}`;
 }

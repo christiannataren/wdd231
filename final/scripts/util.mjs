@@ -7,7 +7,6 @@ export function fillDialog(html) {
         document.querySelector("dialog").close();
     });
     dialog.showModal();
-
 }
 export function getLocation() {
     return window.location.href.split("?")[0].split("/")[window.location.href.split("?")[0].split("/").length - 1];
