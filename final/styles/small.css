@@ -17,6 +17,17 @@ h3 {
     color: var(--secondary-color);
 }
 
+h1{
+    margin-top: 0.8em;
+}
+#logo {
+    font-size: 3em;
+    font-weight: bold;
+    font-family: "Poller One", Georgia, serif;
+    color: var(--secondary-color);
+
+}
+
 img {
     width: 100%;
     height: auto;
